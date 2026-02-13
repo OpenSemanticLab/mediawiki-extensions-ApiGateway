@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"apigateway-extensionname": "ApiGateway",
+	"apigateway-desc": "Routes external API endpoints transparently through the MediaWiki REST API with per-endpoint token injection",
+	"right-apigateway": "Use the API gateway to access external APIs",
+	"action-apigateway": "use the API gateway",
+	"apigateway-error-permissiondenied": "You do not have permission to use the API gateway.",
+	"apigateway-error-badtoken": "Invalid or missing CSRF token. A valid token is required for write operations.",
+	"apigateway-error-unknownendpoint": "Unknown API endpoint: \"$1\". This endpoint is not configured.",
+	"apigateway-error-methodnotallowed": "HTTP method $1 is not allowed for endpoint \"$2\".",
+	"apigateway-error-invalidurl": "The constructed target URL is invalid.",
+	"apigateway-error-invalidscheme": "URL scheme \"$1\" is not allowed. Only http and https are supported.",
+	"apigateway-error-ssrf": "The target URL resolves to a private or reserved network address and cannot be accessed.",
+	"apigateway-error-requestfailed": "The external API request failed: $1.",
+	"apigateway-error-bodytoolarge": "Request body exceeds the maximum allowed size of $1 bytes."
+}

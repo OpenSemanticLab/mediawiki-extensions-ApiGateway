@@ -1,0 +1,62 @@
+{
+	"name": "ApiGateway",
+	"namemsg": "apigateway-extensionname",
+	"version": "1.0.0",
+	"author": ["Simon Stier"],
+	"url": "https://www.mediawiki.org/wiki/Extension:ApiGateway",
+	"descriptionmsg": "apigateway-desc",
+	"license-name": "GPL-2.0-or-later",
+	"type": "api",
+	"requires": {
+		"MediaWiki": ">= 1.39"
+	},
+	"AvailableRights": [
+		"apigateway"
+	],
+	"GroupPermissions": {
+		"user": {
+			"apigateway": true
+		}
+	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\ApiGateway\\": "src/"
+	},
+	"RestRoutes": [
+		{
+			"path": "/apigateway/v1/{endpoint}",
+			"method": [ "GET", "POST", "PUT", "DELETE", "PATCH" ],
+			"class": "MediaWiki\\Extension\\ApiGateway\\Rest\\GatewayHandler",
+			"services": [ "HttpRequestFactory", "MainConfig" ]
+		}
+	],
+	"MessagesDirs": {
+		"ApiGateway": [ "i18n" ]
+	},
+	"config": {
+		"ApiGatewayEndpoints": {
+			"value": {},
+			"description": "Map of endpoint key => configuration for external API proxying. Each entry should have at minimum a 'url' key. Optional keys: 'token', 'tokenHeader', 'allowedMethods', 'timeout', 'permission'."
+		},
+		"ApiGatewayAllowedResponseHeaders": {
+			"value": [
+				"content-type",
+				"content-length",
+				"content-disposition",
+				"etag",
+				"last-modified",
+				"cache-control",
+				"x-request-id"
+			],
+			"description": "Response headers from external API that are forwarded back in the API response."
+		},
+		"ApiGatewayMaxBodySize": {
+			"value": 2097152,
+			"description": "Maximum request body size in bytes (default 2MB)."
+		},
+		"ApiGatewayDefaultTimeout": {
+			"value": 30,
+			"description": "Default timeout for external requests in seconds."
+		}
+	},
+	"manifest_version": 2
+}

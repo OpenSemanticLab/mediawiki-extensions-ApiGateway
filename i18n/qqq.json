@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"apigateway-extensionname": "{{name}}",
+	"apigateway-desc": "{{desc|what=extension|name=ApiGateway|url=https://www.mediawiki.org/wiki/Extension:ApiGateway}}",
+	"right-apigateway": "{{right}}",
+	"action-apigateway": "{{action}}",
+	"apigateway-error-permissiondenied": "Error message when the user does not have the required permission.",
+	"apigateway-error-badtoken": "Error message when a CSRF token is invalid or missing for write operations.",
+	"apigateway-error-unknownendpoint": "Error message when the requested endpoint key does not exist in configuration.\n* $1 - the endpoint key",
+	"apigateway-error-methodnotallowed": "Error message when the HTTP method is not allowed for the endpoint.\n* $1 - the HTTP method\n* $2 - the endpoint key",
+	"apigateway-error-invalidurl": "Error message when the target URL is malformed.",
+	"apigateway-error-invalidscheme": "Error message for unsupported URL schemes.\n* $1 - the scheme",
+	"apigateway-error-ssrf": "Error message when the target URL resolves to a blocked internal network address.",
+	"apigateway-error-requestfailed": "Error message when the external HTTP request fails.\n* $1 - error details",
+	"apigateway-error-bodytoolarge": "Error message when the request body exceeds the configured size limit.\n* $1 - maximum size in bytes"
+}
