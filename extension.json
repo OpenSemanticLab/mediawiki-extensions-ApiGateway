@@ -1,7 +1,7 @@
 {
 	"name": "ApiGateway",
 	"namemsg": "apigateway-extensionname",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"author": ["Simon Stier"],
 	"url": "https://www.mediawiki.org/wiki/Extension:ApiGateway",
 	"descriptionmsg": "apigateway-desc",
