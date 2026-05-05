@@ -120,8 +120,9 @@ class GatewayHandler extends Handler {
 			);
 		}
 
-		// 6. For write methods, validate CSRF token
-		if ( in_array( $method, self::WRITE_METHODS ) ) {
+		// 6. For write methods, validate CSRF token (unless disabled per endpoint)
+		$csrfRequired = $endpointConfig['csrfRequired'] ?? true;
+		if ( $csrfRequired && in_array( $method, self::WRITE_METHODS ) ) {
 			$queryParams = $this->getRequest()->getQueryParams();
 			$token = $queryParams['token'] ?? '';
 			$expectedToken = $this->getSession()->getToken();
@@ -135,7 +136,8 @@ class GatewayHandler extends Handler {
 
 		// 7. Construct target URL
 		$queryParams = $this->getRequest()->getQueryParams();
-		$path = $queryParams['path'] ?? '';
+		// Prefer path from route wildcard ({+path}), fall back to query param
+		$path = $this->getRequest()->getPathParam( 'path' ) ?? $queryParams['path'] ?? '';
 		$query = $queryParams['query'] ?? '';
 
 		$baseUrl = rtrim( $endpointConfig['url'], '/' );
