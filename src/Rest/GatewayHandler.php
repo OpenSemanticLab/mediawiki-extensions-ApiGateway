@@ -157,8 +157,12 @@ class GatewayHandler extends Handler {
 			$targetUrl .= $separator . $queryString;
 		}
 
-		// 8. SSRF protection
-		$this->validateTargetUrl( $targetUrl );
+		// 8. SSRF protection — skip if target host matches admin-configured base host
+		$baseHost = parse_url( $baseUrl, PHP_URL_HOST ) ?? '';
+		$targetHost = parse_url( $targetUrl, PHP_URL_HOST ) ?? '';
+		if ( $baseHost === '' || strtolower( $targetHost ) !== strtolower( $baseHost ) ) {
+			$this->validateTargetUrl( $targetUrl );
+		}
 
 		// 9. Build outbound request headers
 		$requestHeaders = [];
