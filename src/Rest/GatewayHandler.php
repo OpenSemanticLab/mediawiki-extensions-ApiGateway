@@ -267,6 +267,7 @@ class GatewayHandler extends Handler {
 	 * @return string
 	 */
 	private function sanitizePath( string $path ): string {
+		$hadTrailingSlash = str_ends_with( $path, '/' );
 		$path = str_replace( "\0", '', $path );
 		$path = preg_replace( '#/+#', '/', $path );
 
@@ -281,7 +282,11 @@ class GatewayHandler extends Handler {
 			}
 		}
 
-		return implode( '/', $sanitized );
+		$result = implode( '/', $sanitized );
+		if ( $hadTrailingSlash && $result !== '' ) {
+			$result .= '/';
+		}
+		return $result;
 	}
 
 	/**
